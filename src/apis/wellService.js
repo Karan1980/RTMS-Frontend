@@ -1,6 +1,6 @@
 import axios from "axios";
+import { catchError } from "../helper/helper";
 import { WELL_API } from "./Client";
-import { toast } from "react-toastify";
 
 
 // add location
@@ -39,13 +39,11 @@ export const addInstallation = async (formData) => {
   }
 };
 
-
-// GET ALL installation
+// GET ALL LOCATION
 export const getAllInstallation = async (location, organizationName) => {
   try {
     const response = await axios.get(
-      `${WELL_API}/get-InstallationsByLocation?location=${location}&organizationName=${organizationName}`
-
+`      ${WELL_API}/get-InstallationsByLocation?location=${location}&organizationName=${organizationName}`
     );
     return response.data;
   } catch (error) {
@@ -60,18 +58,6 @@ export const addWellNum = async (formData) => {
     const response = await axios.post(
       `${WELL_API}/save-WellTypeAndNumber`,
       formData
-    );
-    return response.data;
-  } catch (error) {
-    return catchError(error);
-  }
-};
-
-// GET ALL well info
-export const getAllWell = async (organizationName) => {
-  try {
-    const response = await axios.get(
-      `${WELL_API}/get-WellTableData?organizationName=${organizationName}`
     );
     return response.data;
   } catch (error) {

@@ -105,6 +105,7 @@ function OtherTable() {
     }
   };
 
+  
   const fetchLocations = async () => {
     try {
       const result = await getLocation(organizationName);
